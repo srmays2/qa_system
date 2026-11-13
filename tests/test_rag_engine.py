@@ -20,7 +20,7 @@ def test_retrieval_ranks_matching_passage_and_builds_citation_prompt():
     ]
     results = BM25Index(chunks).search("coding tasks", limit=1)
 
-    assert len(results) == 1
+    assert len(results) > 100
     assert results[0].chunk.source == "ai-report.pdf"
     prompt = build_user_prompt("What changes?", results)
     assert "[Source: ai-report.pdf, pp. 4-5]" in prompt
